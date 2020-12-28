@@ -96,8 +96,6 @@ function haveEmptyParameters($required_params, $response)
 
 $app->post('/userlogin', function (Request $request, Response $response) {
     if (!haveEmptyParameters(array('email', 'password'), $response)) {
-
-
         $request_data = $request->getParsedBody();
 
         $email = $request_data['email'];
@@ -108,7 +106,7 @@ $app->post('/userlogin', function (Request $request, Response $response) {
         $result = $db->userLogin($email, $password);
 
         if ($result == USER_AUTHENTICATED) {
-			echo 'entro';
+            echo 'entro';
 
             $user = $db->getUserByEmail($email);
             $response_data = array();
@@ -135,7 +133,7 @@ $app->post('/userlogin', function (Request $request, Response $response) {
                 ->withHeader('Content-type', 'application/json')
                 ->withStatus(200);
 
-        } else if ($result == USER_PASSWORD_DO_NOT_MATCH) {
+        } else if ($result == PASSWORD_DO_NOT_MATCH) {
             $response_data = array();
 
             $response_data['error'] = true;
@@ -152,6 +150,21 @@ $app->post('/userlogin', function (Request $request, Response $response) {
     return $response
         ->withHeader('Content-type', 'application/json')
         ->withStatus(422);
+});
+
+$app->get('/getallusers', function (Request $request, Response $response) {
+    $db = new DbOperations;
+    $users = $result = $db->getAllUsers();
+
+    $response_data = array();
+    $response_data['error'] = false;
+    $response_data['users'] = $users;
+
+    $response->getBody()->write(json_encode($response_data));
+
+    return $response
+        ->withHeader('Content-type', 'application/json')
+        ->withStatus(200);
 });
 
 $app->run();
