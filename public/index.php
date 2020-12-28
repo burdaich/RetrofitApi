@@ -114,7 +114,7 @@ $app->post('/userlogin', function (Request $request, Response $response) {
             $response_data = array();
 
             $response_data['error'] = false;
-            $response_data['message'] = 'Login Successful';
+            $response_data['message'] = 'Login successful';
             $response_data['user'] = $user;
 
             $response->getBody()->write(json_encode($response_data));
