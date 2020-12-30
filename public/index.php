@@ -91,8 +91,6 @@ $app->post('/userlogin', function (Request $request, Response $response) {
         $result = $db->userLogin($email, $password);
 
         if ($result == USER_AUTHENTICATED) {
-            echo 'entro';
-
             $user = $db->getUserByEmail($email);
             $response_data = array();
 
