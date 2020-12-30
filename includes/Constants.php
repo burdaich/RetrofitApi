@@ -1,8 +1,8 @@
 <?php
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'my_app');
+define('DB_HOST', 'us-cdbr-east-02.cleardb.com');
+define('DB_USER', 'b9967eb595fd75');
+define('DB_PASSWORD', 'a43dc3a7');
+define('DB_NAME', 'heroku_8924fb6452c955f');
 
 define('USER_CREATED', 101);
 define('USER_EXISTS', 102);

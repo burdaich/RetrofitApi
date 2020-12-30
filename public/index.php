@@ -9,7 +9,13 @@ require '../includes/DbOperations.php';
 
 $app = AppFactory::create();
 $app->addBodyParsingMiddleware();
+ 
+//heroku
  $app->setBasePath("/public");
+
+//develop
+//  $app->setBasePath("/MyApi/public");
+
 $app->addErrorMiddleware(true, true, true);
 
 /**
