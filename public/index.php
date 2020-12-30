@@ -9,7 +9,7 @@ require '../includes/DbOperations.php';
 
 $app = AppFactory::create();
 $app->addBodyParsingMiddleware();
-$app->setBasePath("/MyApi/public");
+$app->addRoutingMiddleware();
 $app->addErrorMiddleware(true, true, true);
 
 /**
